@@ -113,3 +113,16 @@
     margin: 20px auto;
     width: fit-content;
 }
+#move-counter {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    color: #0c151d;
+    background-color: #63abee;
+    border: 3px solid #0c151d;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 5px #066ccb;
+    margin: 20px auto;
+    width: fit-content;
+}

@@ -11,6 +11,7 @@ let players = [{
     score: 0
 }]
 let currentPlayer = 0;
+let moves = 0;
 let clickedTiles = [];
 let completeTiles = [];
 let gridSize = 0;
@@ -31,6 +32,7 @@ hardButton.addEventListener('click', async () => {
 });
 
 createPlayerScores();
+createMoveCounter();
 
 function tileClick(event) {
     if (clickedTiles.includes(event.target) || completeTiles.includes(event.target)) {
@@ -41,6 +43,8 @@ function tileClick(event) {
     event.target.style.backgroundImage = event.target.dataset.image;
 
     if (clickedTiles.length === 2) {
+        moves++;
+        document.getElementById('move-counter').innerText = `Moves: ${moves}`;
         if (clickedTiles[0].dataset.image === clickedTiles[1].dataset.image) {
             players[currentPlayer].score++;
             document.getElementById(`player-${currentPlayer}`).innerText = `${players[currentPlayer].name}: ${players[currentPlayer].score}`;
@@ -68,6 +72,19 @@ function winnerWinnerChickenDinner() {
     winnerHeader.id = 'winner-header';
 
     document.getElementById('app').appendChild(winnerHeader);
+}
+
+function createMoveCounter() {
+    const existingCounter = document.getElementById('move-counter');
+    if (existingCounter) {
+        existingCounter.remove();
+    }
+
+    const moveCounter = document.createElement('div');
+    moveCounter.id = 'move-counter';
+    moveCounter.innerText = `Moves: ${moves}`;
+
+    document.getElementById('app').appendChild(moveCounter);
 }
 
 function createPlayerScores() {
@@ -98,6 +115,7 @@ async function init(grid) {
         score: 0
     }]
     currentPlayer = 0;
+    moves = 0;
     clickedTiles = [];
     completeTiles = [];
     gridSize = grid.length * grid[0].length;
