@@ -122,6 +122,8 @@ async function init(grid) {
 
     let winnerHeader = document.getElementById('winner-header');
     let playerScores = document.getElementsByClassName('player-score');
+    let moveCounter = document.getElementById('move-counter');
+    moveCounter.innerText = `Moves: ${moves}`;
     if (winnerHeader) {
         winnerHeader.remove();
     }
